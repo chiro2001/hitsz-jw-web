@@ -1,0 +1,342 @@
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="renderer" content="webkit">
+  <title>统一身份认证系统</title>
+  
+  <link href="/cas/heer/css/login.css;jsessionid=6BB9C624B0FE89EB14C337D316E0567C?1=222" rel="stylesheet" type="text/css" />
+  <script type='text/javascript' src='/cas/js/jquery.min.js;jsessionid=6BB9C624B0FE89EB14C337D316E0567C'></script>
+  <script type='text/javascript' src='/cas/heer/js/webwidget_scroller_tab.js;jsessionid=6BB9C624B0FE89EB14C337D316E0567C'></script>
+  <script type='text/javascript' src='/cas/heer/js/jquery.qrcode.min.js;jsessionid=6BB9C624B0FE89EB14C337D316E0567C'></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+  <![endif]-->
+<style>
+body{
+	background-image: url(heer/image/bg.jpg);
+	background-repeat: no-repeat;
+	background-size:100% auto;background-size: cover;background-attachment: fixed;
+	}
+</style>
+</head>
+<body>
+  <div id="bodybg">
+	<div class="login_head">
+	  <ul>
+	    <li style="float:left;"><img src="/cas/heer/image/loginlogo.png;jsessionid=6BB9C624B0FE89EB14C337D316E0567C"  width="611" height="80"/></li>
+	    <li style=" font-size: 12px; margin-right: 30px;float: right;">
+	    	<div>推荐浏览器：</div>
+	    	<div><img width="20" height="20" src="/cas/heer/image/ie.png;jsessionid=6BB9C624B0FE89EB14C337D316E0567C"></div><div>IE10+&nbsp;</div>
+	    	<div><img width="20" height="20" src="/cas/heer/image/chrome.png;jsessionid=6BB9C624B0FE89EB14C337D316E0567C"></div><div>谷歌&nbsp;</div>
+	    	<div><img width="20" height="20" src="/cas/heer/image/360.png;jsessionid=6BB9C624B0FE89EB14C337D316E0567C"></div><div>360极速</div>
+	    </li>
+	  </ul>
+	</div>
+
+
+
+
+<script language="javascript" type="text/javascript">
+    $(function() {
+        $(".webwidget_scroller_tab").webwidget_scroller_tab({
+            scroller_window_padding: '10',
+            scroller_window_width: '320',
+            
+            scroller_window_height: '400',
+            scroller_head_text_color: '#0099FF',
+            scroller_head_current_text_color: '#666',
+            directory: 'images'
+        });
+        //qrCode();
+        //$('.code_notice a').attr('href','http://59.173.240.147:8882/oa/app-dsp.jsp');
+    });
+</script>
+
+
+<div class="zj2">
+	<div class="dl2" style="position:relative;">
+	<form id="fm1" action="/cas/login;jsessionid=6BB9C624B0FE89EB14C337D316E0567C" method="post">
+ 		<div class="webwidget_scroller_tab" id="webwidget_scroller_tab">
+            <div class="tabContainer">
+                <ul class="tabHead">
+                    <li class="currentBtn"><a class="active account_login">账号登录</a></li>
+                    <li><a class="code_login">二维码登录</a></li>
+                </ul>
+            </div>
+            <div id="way1" class="tabBody">
+                <ul>
+                    <li class="tabCot">
+                    	<div class="login_way">
+							<span style="margin-top:5px;">
+								<a href="/cas/common/zgh;jsessionid=6BB9C624B0FE89EB14C337D316E0567C" target="_blank">查询新工号</a>
+							</span>
+							<a href="javascript:way(true);" style="float:right;">验证码快捷登录</a></div>
+						<br/>
+                      	
+				          
+				          
+				            
+				            
+				            <input type="text" value="username" class="login_box_inputuser" id="username" size="25" tabindex="1" accesskey="n" name="username" autocomplete="off" placeholder="请输入职工号"/>
+				          
+				        
+				            
+				        <input type="password" class="login_box_inputpassword"  id="password" size="25" tabindex="2" name="password"  accesskey="" autocomplete="off" placeholder="请输入密码"/>
+				  
+						<div class="down_link_choice">
+							<input id="rememberMe" name="rememberMe" tabindex="4" type="checkbox" class="login_box_checkbox" checked="checked"/>
+							<span class="login_box_checkbox_label">记住账号</span>
+							
+							<a href="/cas/resetPw;jsessionid=6BB9C624B0FE89EB14C337D316E0567C" class="login_box_psd" style="float:right;">忘记密码？</a>
+						</div>
+					    <input type="hidden" name="lt" value="LT-68962-FjGQcUhSPdzJReGXbLzocvg0BEfaPE-cas" />
+				        <input type="hidden" name="execution" value="e1s1" />
+				        <input type="hidden" name="_eventId" value="submit" />
+						<span class="landing_btn_bg">
+							<input style="color:#fff;" class="login_box_landing_btn" type="button" onclick="_submit(1);" value="登录"/>
+						</span>
+					  <div style=" float:left; width:320px;border-top:1px solid #eee; padding:15px 0px 0px 0; margin-top:10px;">
+					  	<span style="margin-left:32px;">可以使用以下方式登录</span></div>
+					  <div class="login_way" style="width: 300px">
+					  	
+							<a class="tencent" href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101444186&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DQQClient&amp;scope=get_user_info">QQ登录</a>
+						
+						
+							<a class="wechat" href="https://open.weixin.qq.com/connect/qrconnect?appid=wx8e832583d1a4edad&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DWeixinClient&amp;response_type=code&amp;scope=snsapi_login#wechat_redirect" style="padding-right: 15px">微信登录</a>
+						
+						
+							<a class="htichat" href="http://ids.hit.edu.cn/authserver/oauth2.0/authorize?response_type=code&amp;client_id=ewMQhphg&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DHitClient&amp;state=lCgTRZaPLI6Wdfw">本部账号登录</a>
+						
+						
+					  </div>
+                    </li>
+                    <li class="tabCot" style="margin-top:0px;">
+                       <div style="width:auto;height:auto;" class="code" id="qrcode"></div>
+						<div style="display: none;" class="code_notice">请打开<a>智慧校园APP</a>，扫描二维码登录</div> 
+                    </li>
+                </ul>
+                <div style="clear:both"></div>
+            </div>
+            <div id="way2" class="tabBody" style="display:none">
+                <ul>
+                    <li class="tabCot">
+                    <div id="msg3" class="errors"></div><div id="msg2" class="success"></div>
+				        <input type="text" class="login_box_inputuser" id="vc_username" size="25" tabindex="1" accesskey="n" name="vc_username" autocomplete="off" placeholder="请输入职工号"/>
+				        <input type="text" class="login_box_inputyzm" id="vc_password" size="25" tabindex="2" name="vc_password"  accesskey="" autocomplete="off" placeholder="验证码"/>
+				        <input type="button" id="vcode_btn" class="pass-item-timer" value="点击获取" onclick="sendCode()" />
+						
+						<span class="landing_btn_bg">
+							<input style="color:#fff;" class="login_box_landing_btn" type="button" onclick="_submit(2);" value="登录"/>
+						</span>
+                      	<div class="login_way">
+							<span style="margin-top:5px; margin-left:175px;"></span>
+							<a href="javascript:way(false);">账号密码登录</a>
+						</div> 
+						<div style=" float:left; width:320px;border-top:1px solid #eee; padding:15px 0px 0px 0; margin-top:10px;">
+						  	<span style="margin-left:32px;">可以使用以下方式登录</span></div>
+						  <div class="login_way" style="width: 300px">
+					  	
+							<a class="tencent" href="https://graph.qq.com/oauth2.0/authorize?response_type=code&amp;client_id=101444186&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DQQClient&amp;scope=get_user_info">QQ登录</a>
+						
+						
+							<a class="wechat" href="https://open.weixin.qq.com/connect/qrconnect?appid=wx8e832583d1a4edad&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DWeixinClient&amp;response_type=code&amp;scope=snsapi_login#wechat_redirect" style="padding-right: 15px">微信登录</a>
+						
+						
+							<a class="htichat" href="http://ids.hit.edu.cn/authserver/oauth2.0/authorize?response_type=code&amp;client_id=ewMQhphg&amp;redirect_uri=https%3A%2F%2Fsso.hitsz.edu.cn%3A7002%2Fcas%2Flogin%3Fclient_name%3DHitClient&amp;state=lCgTRZaPLI6Wdfw">本部账号登录</a>
+						
+							
+					  </div>
+                    </li>
+                    <li class="tabCot" style="margin-top:0px;">
+                       <div style="width:auto;height:auto;" class="code" id="qrcode2"></div>
+						<div style="display: none;" class="code_notice">请打开<a>智慧校园APP</a>，扫描二维码登录</div> 
+                    </li>
+                </ul>
+                <div style="clear:both"></div>
+            </div>
+            <div class="modBottom">
+                <span class="modABL">&nbsp;</span><span class="modABR">&nbsp;</span>
+            </div>
+		</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" >
+  function qrCode(){
+	$.getJSON('/cas/qrcode;jsessionid=6BB9C624B0FE89EB14C337D316E0567C?_='+new Date().getTime(),function(data){
+		var qrcode_data = JSON.stringify(data);
+  		$('#qrcode').qrcode(qrcode_data);
+  		$('#qrcode2').qrcode(qrcode_data);
+  		$.getJSON('/cas/qrcode;jsessionid=6BB9C624B0FE89EB14C337D316E0567C?ut=logining&qrcode='+data.qrcode+'&_='+new Date().getTime(),function(data2){
+      		if('success'==data2.code){
+      			$('#vc_username').val(data2.username);
+      			$('#vc_password').val(data2.vcode);
+      			$('#fm1').submit();
+      		}
+      	});
+  	});
+  }
+  function _submit(n){
+	  if(n==1){
+		  if($('#username').val()==''){
+			  $('#username').css('border-color','red');
+			  $('#username').focus();
+			  return;
+		  }else{
+			  $('#username').css('border-color','#dedede');
+		  }
+		  if($('#password').val()==''){
+			  $('#password').css('border-color','red');
+			  $('#password').focus();
+			  return;
+		  }else{
+			  $('#password').css('border-color','#dedede');
+		  }
+		  $('#vc_password').val('');
+	  }else{
+		  if($('#vc_username').val()==''){
+			  $('#vc_username').css('border-color','red');
+			  $('#vc_username').focus();
+			  return;
+		  }else{
+			  $('#vc_username').css('border-color','#dedede');
+		  }
+		  if($('#vc_password').val()==''){
+			  $('#vc_password').css('border-color','red');
+			  $('#vc_password').focus();
+			  return;
+		  }else{
+			  $('#vc_password').css('border-color','#dedede');
+		  }
+	  }
+	  var isRmbPwd = document.getElementById("rememberMe").checked ;
+	  if ( isRmbPwd == true )
+      {   
+          setCookie ( "j_username", $('#username').val(), 30 ) ;
+      } else {
+          delCookie ( "j_username" ) ;
+      }
+	  $('#fm1').submit();
+  }
+  var sub_way = false;
+  function way(t){
+	  sub_way = t;
+	  if(t){
+		  $('#msg').hide();
+		  $('#way1').hide();
+		  $('#way2').show();
+		  $('.account_login').html('验证码登录');
+	  }else{
+		  $('#msg').show();
+		  $('#way1').show();
+		  $('#way2').hide();
+		  $('.account_login').html('账号登录');
+	  }
+  }
+  $(document).keyup(function(event){
+	  if(event.keyCode ==13){
+	    if(!sub_way){
+	    	_submit(1)
+	    }else{
+	    	_submit(0)
+	    }
+	  }
+  });
+  
+  var interval;
+  var timeLine = 100;
+  function sendCode(){
+	  $.getJSON('/cas/vcode;jsessionid=6BB9C624B0FE89EB14C337D316E0567C?_t='+new Date().getTime()+'&vc_username='+$('#vc_username').val(),
+		  function(data){
+			  if(data.code == 'success'){
+				  $('#msg3').hide();
+				  $('#msg2').show();
+				  $('#msg2').html(data.msg);
+				  $('#vcode_btn').attr("disabled",true);
+				  start();
+				  interval = setInterval("start()",1000);
+			  }else{
+				  $('#msg3').show();
+				  $('#msg2').hide();
+				  $('#msg3').html(data.msg);
+			  }			  
+	  	  });
+	  
+  }
+  function start(){
+	  if(timeLine==0){
+		  clearInterval(interval);
+		  timeLine = 100;
+		  $('#vcode_btn').attr("disabled",false).val('重新发送')
+		  return;
+	  }
+	  $('#vcode_btn').val(timeLine+'秒后重新发送')
+	  timeLine--;	  
+  }
+</script>
+
+
+
+
+	<div class="foot">
+		<ul>
+			<li>版权信息： &copy; 2018 哈尔滨工业大学（深圳）&nbsp;&nbsp;技术支持：深圳希尔智慧科技集团有限公司</li>
+		</ul>
+	</div>
+
+  </div>
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+$(function(){
+	var username = getCookie("j_username") ;
+    if ( username == "" ) {
+        document.getElementById("username").value="" ;
+        //document.getElementById("rememberMe").checked=false ;
+    } else {
+        document.getElementById("username").value = username ;
+        document.getElementById("rememberMe").checked = true ;
+    }
+});
+
+function setCookie ( name, value, expdays ){
+    var expdate = new Date();
+    expdate.setDate(expdate.getDate() + expdays) ;
+    document.cookie = name + "=" + escape(value) + ";expires=" + expdate.toUTCString();
+}
+function getCookie ( name ){
+    var start = document.cookie.indexOf(name+"=") ;
+    if ( start != -1 ){
+        start = start + name.length + 1 ;
+        var end = document.cookie.indexOf(";", start) ;
+        if ( end == -1 )
+            end = document.cookie.length ;
+        return unescape(document.cookie.substring(start,end)) ;
+    }
+    return "" ;
+}
+
+function delCookie ( name ){
+    setCookie ( name, "", -1 ) ;
+}
+
+</script>
