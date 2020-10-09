@@ -190,10 +190,37 @@ export default {
 		else if (str2 === "d") {
 			return str1 * 24 * 60 * 60 * 1000;
 		}
-	}
+	},
 	//这是有设定过期时间的使用示例：
 	//s20是代表20秒
 	//h是指小时，如12小时则是：h12
 	//d是天数，30天则：d30
 	// setCookie("name", "hayden", "s20");
+	randomNum: function (minNum, maxNum) {
+		switch (arguments.length) {
+			case 1:
+				return parseInt(Math.random() * minNum + 1, 10);
+			case 2:
+				return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+			default:
+				return 0;
+		}
+	},
+	getDataTime: function (a) {
+		return parseInt(moment().day(a.weekday)
+			.set("hour", parseInt(a.duration[0].split(':')[0]))
+			.set("minute", parseInt(a.duration[0].split(':')[1]))
+			.set('second', 0)
+			.format('X'));
+	},
+	getDataEndTime: function (a) {
+		return parseInt(moment().day(a.weekday)
+			.set("hour", parseInt(a.duration[1].split(':')[0]))
+			.set("minute", parseInt(a.duration[1].split(':')[1]))
+			.set('second', 0)
+			.format('X'));
+	},
+	getUnixNow: function() {
+		return Math.round(new Date().getTime()/1000);
+	}
 }

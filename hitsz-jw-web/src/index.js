@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { ThemeProvider } from '@material-ui/core/styles';
 import './index.css';
 import App from './App';
+import Login from "./Login"
 import * as serviceWorker from './serviceWorker';
 import Config from "./config.ts"
 import utils from "./utils"
@@ -16,6 +17,7 @@ ReactDOM.render(
   <ThemeProvider theme={Config.theme}>
     <Router>
       <Route path="/index" component={App} />
+      <Route path="/login" component={Login} />
       <Redirect from="/" to="/index" />
     </Router>
   </ThemeProvider>,

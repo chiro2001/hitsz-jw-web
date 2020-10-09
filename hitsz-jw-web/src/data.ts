@@ -1,5 +1,6 @@
 import moment from "moment"
 import API from "./api"
+import utils from "./utils.js"
 // 数据储存格式：
 // 本地储存中: 
 // week-1 ~ week17
@@ -24,13 +25,7 @@ export default class {
       if (data.code !== 0)
         return undefined;
       data.data.sort((a: any, b: any) => {
-        return parseInt(moment().day(a.weekday)
-          .set("hour", parseInt(a.duration[0].split(':')[0]))
-          .set("minute", parseInt(a.duration[0].split(':')[1]))
-          .format('X')) - parseInt(moment().day(b.weekday)
-            .set("hour", parseInt(b.duration[0].split(':')[0]))
-            .set("minute", parseInt(b.duration[0].split(':')[1]))
-            .format('X'));
+        return utils.getDataTime(a) - utils.getDataTime(b);
       });
       this.set_week(week, data);
       return data
@@ -57,6 +52,10 @@ export default class {
   }
   public set_week(week: number, data: object) {
     localStorage.setItem('week-' + week, JSON.stringify(data))
+  }
+  public remove_weeks() {
+    for (let i=0; i<=100; i++)
+      localStorage.removeItem('week-' + i);
   }
   public clear() {
     localStorage.clear();

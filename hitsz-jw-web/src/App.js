@@ -9,12 +9,13 @@ import Button from "@material-ui/core/Button"
 import TextField from '@material-ui/core/TextField';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import Drawer from '@material-ui/core/Drawer';
 import PadCard from './components/PadCard'
 import moment from "moment"
-import MyTimeLine from "./components/MyTimeLime"
+import MyTimeLine from "./components/MyTimeLine"
 import Data from "./data.ts"
-import config from "./config.ts"
 import Config from './config';
+import LeftPage from "./components/LeftPage"
 
 
 export default class App extends React.Component {
@@ -24,11 +25,28 @@ export default class App extends React.Component {
     this.update_week_data = this.update_week_data.bind(this);
     this.state = {
       timeLineData: new Array(),
+      drawerOpen: false,
     };
     Config.load();
     this.data = new Data();
-    this.login('200110619', '1352040930lxr').then(this.update_week_data);
+    let user = this.data.get_user();
+    if (!user || !user.token) {
+      console.log('goto /login');
+      props.history.push('/login');
+      return;
+    }
+    this.login(user.data.username, user.data.password).then(this.update_week_data);
+    // this.login('200110619', '1352040930lxr').then(this.update_week_data);
     // this.update_week_data();
+    // 每秒刷新
+    let timer_update = function (obj) {
+      setTimeout(() => {
+        obj.update_week_data();
+        console.log('Timer');
+        timer_update(obj);
+      }, 1000);
+    }
+    timer_update(this);
   }
 
   get_week_now() {
@@ -50,6 +68,8 @@ export default class App extends React.Component {
     let week = this.get_week_now();
     // console.log('week', week);
     let d = await this.data.get_by_week(week);
+    if (!d)
+      return;
     console.log(this.data.token, d);
     this.setState({
       timeLineData: d.data,
@@ -59,33 +79,31 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <AppBar style={{ background: config.bg }}> */}
-        {/* <AppBar style={{ background: '#FFFFFF' }}>
-        <Toolbar id="back-to-top-anchor">
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            便携教务系统
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
         <div style={{ width: '100%', height: '64px' }}>
           <Toolbar id="back-to-top-anchor">
             {/* <Typography variant="h6" style={{ flexGrow: 1 }}>
             便携教务系统
           </Typography> */}
-            <IconButton>
+            <IconButton onClick={() => {
+              this.setState({ drawerOpen: true })
+            }}>
               <MenuIcon />
             </IconButton>
           </Toolbar>
+          <Drawer open={this.state.drawerOpen} onClose={() => {
+            this.setState({ drawerOpen: false });
+          }}>
+            <div style={{ width: 200 }} onClick={() => { this.setState({ drawerOpen: false }); }}>
+              <LeftPage history={this.props.history} user={this.data.get_user()} />
+            </div>
+          </Drawer>
         </div>
-
-        {/* 一个AppBar高度 */}
-        {/* <div style={{ marginTop: 64 + 'px' }}></div> */}
 
         <br />
 
         <div className="container-main">
           <Container>
-            <PadCard></PadCard>
+            <PadCard data={this.state.timeLineData}></PadCard>
             <MyTimeLine data={this.state.timeLineData}></MyTimeLine>
           </Container>
         </div>

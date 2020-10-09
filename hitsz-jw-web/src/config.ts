@@ -1,19 +1,23 @@
 import React from 'react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { teal, red, grey } from '@material-ui/core/colors';
+import { teal, red, grey, deepOrange } from '@material-ui/core/colors';
 
 export default class Config {
   public static default_config = {
     theme: {
-      primary: {
-        main: teal[500],
-      },
-      secondary: {
-        main: red[500],
-      },
-      info: {
-        main: grey[50],
-      }
+      // primary: {
+      //   main: '#FFFFFF',
+      // },
+      // secondary: {
+      //   main: red[500],
+      // },
+      // info: {
+      //   main: grey[50],
+      // }
+      primary: { main: red[500] },
+      secondary: { main: deepOrange[500] },
+      info: { main: grey[50] },
+      type: 'dark',
     },
     bg: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     start_time: '2020-08-31',

@@ -29,21 +29,46 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
+import LooksOneIcon from '@material-ui/icons/LooksOne';
+import LooksTwoIcon from '@material-ui/icons/LooksTwo';
+import Looks3Icon from '@material-ui/icons/Looks3';
+import Looks4Icon from '@material-ui/icons/Looks4';
+import Looks5Icon from '@material-ui/icons/Looks5';
+import PoolIcon from '@material-ui/icons/Pool';
+import PublicIcon from '@material-ui/icons/Public';
+import RowingIcon from '@material-ui/icons/Rowing';
+import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
+import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
+// import TwoWheelerIcon from '@material-ui/icons/TwoWheeler';
+import WcIcon from '@material-ui/icons/Wc';
 import MyTimeLineItemCard from './MyTimeLineItemCard'
+import moment from "moment"
 import config from "./../config.ts"
+import utils from "./../utils.js"
 import logo from "./../logo.svg"
+import Config from '../config';
 
 export default function MyTimeLine(props) {
   const classes = useStyles();
   let data = props.data;
   // console.log(data.show_connector)
+  const weekday_icons = [<LooksOneIcon />, <LooksTwoIcon />, <Looks3Icon />, <Looks4Icon />, <Looks5Icon />];
+  const rand_icons = [
+    <PoolIcon />, <PublicIcon />, <RowingIcon />, <SportsBasketballIcon />, <TransferWithinAStationIcon />, <WcIcon />
+  ];
+
 
   return (
     <TimelineItem>
       <TimelineOppositeContent></TimelineOppositeContent>
       <TimelineSeparator>
-        <TimelineDot>
-          <FastfoodIcon />
+        <TimelineDot style={{
+          background: utils.getDataTime(data) >= utils.getUnixNow() ?
+          Config.bg : utils.getDataEndTime(data) >= utils.getUnixNow() ? 'purple' : undefined
+        }}>
+          {data.weekday >= 1 && data.weekday <= 5 ?
+            weekday_icons[data.weekday - 1]
+            : rand_icons[moment().daysInMonth() % rand_icons.length]}
         </TimelineDot>
         {data.show_connector ? <TimelineConnector /> : undefined}
       </TimelineSeparator>

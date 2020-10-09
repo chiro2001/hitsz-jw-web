@@ -27,6 +27,7 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import RoomIcon from '@material-ui/icons/Room';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
@@ -40,19 +41,20 @@ export default class MyTimeLineItemCard extends React.Component {
   }
   render() {
     let args = this.data;
+    let name = args.available ? args.name : <del>{args.name}</del>;
     return (
       <div className="timeline-item-card">
         <Card>
           <CardActionArea>
             <CardContent>
-              <Typography variant="h5" style={{ fontWeight: '600' }}>
-                {args.name}
+              <Typography variant="h5" style={{ fontWeight: '600', color: args.available ? undefined : 'grey' }}>
+                {name}
               </Typography>
               <Typography variant="body2" color="textSecondary">
                 <AccessTimeIcon style={{ height: 15, width: 15 }} /> {args.duration[0]}~{args.duration[1]}
               </Typography>
               <Typography variant="body2" color="textSecondary">
-                <AccessTimeIcon style={{ height: 15, width: 15 }} /> {args.classroom}
+                <RoomIcon style={{ height: 15, width: 15 }} /> {args.classroom}
               </Typography>
             </CardContent>
           </CardActionArea>
